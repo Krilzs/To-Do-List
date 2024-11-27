@@ -1,0 +1,19 @@
+{
+  "name": "todo-list",
+  "version": "1.0.0",
+  "description": "To-Do List",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Krilzs/To-Do-List.git"
+  },
+  "author": "Jeronimo Corigliano",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Krilzs/To-Do-List/issues"
+  },
+  "homepage": "https://github.com/Krilzs/To-Do-List#readme"
+}

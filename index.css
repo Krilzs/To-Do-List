@@ -1,0 +1,75 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  background-color: lightgray;
+}
+
+#root {
+  display: flex;
+  flex-direction: row;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  align-items: start;
+  width: 250px;
+  outline: solid red;
+  padding: 15px;
+  gap: 25px;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  justify-content: start;
+  align-items: start;
+  width: 100%;
+  outline: solid blue;
+  padding: 15px;
+  gap: 20px;
+}
+
+.tasks-title {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.add-task-btn {
+  width: 100px;
+  height: 30px;
+}
+
+.tasks-list {
+  outline: solid yellow;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 15px;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.task {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  flex-direction: row;
+  align-items: center;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  justify-content: space-between;
+}
