@@ -62,6 +62,11 @@ const createBoard = () => {
     displayTasks(index);
   };
 
+  const deleteProject = (index) => {
+    user_projects.splice(index, 1);
+    displayProjects();
+    resetMain();
+  }
   const displayProjects = () => {
     project_list.innerHTML = "<h2>My Projects</h2>";
     if (user_projects.length === 0) {
@@ -93,11 +98,15 @@ const createBoard = () => {
     board_main.classList = "main";
     board_main.querySelector("#project-info ").innerHTML = `
       <h2>${user_projects[index].title}</h2>
+      <button id='delete-project'>Delete Project</button>
       <h4>Description</h4> 
       <p>${description}</p>`;
     board_main.querySelector("#project-info p").style.color = "rgba(128, 128, 128, 0.5)";
+
+    document.querySelector("#delete-project").addEventListener("click", () => { deleteProject(index); })
+
+
     task_list.innerHTML = "";
-    debugger;
     if (user_projects[index].tasks.length === 0) {
       
       //Create No Tasks Div
@@ -154,9 +163,15 @@ const createBoard = () => {
               <textarea id='description-input-modal' placeholder='Description'>${task.description}</textarea>
               <input id='author-input-modal' type='text' value="${task.author}" placeholder='Author'>
               <input id='status-input-modal' type='text' value="${task.status}" placeholder='Status'>
+              <button id='delete-task-modal'>Delete Task</button>
               <button id='submit-modal'>Submit</button>
             </form>`
           );
+
+          document.querySelector("#delete-task-modal").addEventListener("click", () => {
+            deleteTask(index, task_index);
+            Modal.closeModal();
+          })
 
           document.querySelector("#modal-task-form").addEventListener("submit", (e) => {  
             e.preventDefault();
@@ -206,15 +221,17 @@ const createBoard = () => {
     }
   };
 
+  const resetMain = () => {
+    board_main.classList = "main-base";
+    board_main.innerHTML = `<div id='project-info'><h2>Here You can will find your tasks</h2></div>`;
+  };
 
 
   const getAside = () => {
     return board_aside;
   };
 
-  const getMain = () => {
-    return board_main;
-  };
+
 
   return { addProject, getAside, displayProjects, addTask };
 };
