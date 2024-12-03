@@ -18,7 +18,8 @@ class Task {
 
 const createBoard = () => {
   const app = document.getElementById("root");
-  const user_projects = [];
+  let user_projects = JSON.parse(localStorage.getItem("UserInfo")) || [];
+  console.log(user_projects);
 
   const board_aside = document.createElement("section");
   board_aside.classList += "aside";
@@ -40,12 +41,14 @@ const createBoard = () => {
   const addProject = (title, description) => {
     const newProject = new project(title, description);
     user_projects.push(newProject);
+    localStorage.setItem("UserInfo", JSON.stringify(user_projects));
     displayProjects();
   };
 
   const addTask = (title, description, author, status, index) => {
     const newTask = new Task(title, description, author, status);
     user_projects[index].tasks.push(newTask);
+    localStorage.setItem("UserInfo", JSON.stringify(user_projects));
     displayTasks(index);
   };
 
@@ -54,17 +57,20 @@ const createBoard = () => {
     user_projects[index].tasks[task_index].description = description;
     user_projects[index].tasks[task_index].author = author;
     user_projects[index].tasks[task_index].status = status;
+    localStorage.setItem("UserInfo", JSON.stringify(user_projects));
     displayTasks(index);
   };
 
   const deleteTask = (index, task_index) => {
     user_projects[index].tasks.splice(task_index, 1);
+    localStorage.setItem("UserInfo", JSON.stringify(user_projects));
     displayTasks(index);
   };
 
   const deleteProject = (index) => {
     user_projects.splice(index, 1);
     displayProjects();
+    localStorage.setItem("UserInfo", JSON.stringify(user_projects));
     resetMain();
   };
   const displayProjects = () => {
